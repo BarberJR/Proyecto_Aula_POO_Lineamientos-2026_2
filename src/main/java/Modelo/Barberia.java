@@ -8,6 +8,8 @@ package Modelo;
  *
  * @author brann
  */
+
+
 public class Barberia {
-    
+     
 }
