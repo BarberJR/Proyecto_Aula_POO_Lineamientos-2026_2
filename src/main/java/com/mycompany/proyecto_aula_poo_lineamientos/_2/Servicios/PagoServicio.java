@@ -16,7 +16,7 @@ public class PagoServicio {
 
     public Pago registrarPago(Cita cita, String metodoPago) {
         if (cita.getEstado() != EstadoCita.ATENDIDA) {
-            throw new IllegalStateException("Solo se puede registrar el pago de una cita finalizada.");
+            throw new IllegalStateException("Solo se puede registrar el pago de una cita finalizad.");
         }
         for (Pago p : pagos) {
             if (p.getCita().getId() == cita.getId()) {
@@ -24,7 +24,7 @@ public class PagoServicio {
             }
         }
         if (metodoPago == null || metodoPago.trim().isEmpty()) {
-            throw new IllegalArgumentException("Debe indicar el método de pago.");
+            throw new IllegalArgumentException("Debe indicar el metodp de pago.");
         }
         Pago nuevo = new Pago(siguienteId++, cita, metodoPago);
         pagos.add(nuevo);

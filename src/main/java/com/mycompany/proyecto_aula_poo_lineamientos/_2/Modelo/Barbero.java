@@ -9,13 +9,13 @@ package com.mycompany.proyecto_aula_poo_lineamientos._2.Modelo;
  * @author brann
  */
 public class Barbero extends Persona{
-    private String especialidad;
-    private String estado; 
+     private String especialidad;
+    private EstadoBarbero estado;
 
     public Barbero(int id, String nombre, String telefono, String especialidad) {
         super(id, nombre, telefono);
         this.especialidad = especialidad;
-        this.estado = "activo";
+        this.estado = EstadoBarbero.ACTIVO;
     }
 
     public String getEspecialidad() { 
@@ -24,10 +24,10 @@ public class Barbero extends Persona{
     public void setEspecialidad(String especialidad) { 
         this.especialidad = especialidad; 
     }
-    public String getEstado() { 
+    public EstadoBarbero getEstado() { 
         return estado; 
     }
-    public void setEstado(String estado) { 
+    public void setEstado(EstadoBarbero estado) { 
         this.estado = estado; 
     }
 

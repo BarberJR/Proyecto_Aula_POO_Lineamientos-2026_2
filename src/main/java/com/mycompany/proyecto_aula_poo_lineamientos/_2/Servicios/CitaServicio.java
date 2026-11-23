@@ -34,8 +34,8 @@ public class CitaServicio implements Agendable {
         if (cliente == null || barbero == null) {
             throw new IllegalArgumentException("Cliente y barbero son obligatorios.");
         }
-        if (!"activo".equalsIgnoreCase(barbero.getEstado())) {
-            throw new IllegalStateException("El barbero no está activo.");
+         if (!barbero.getEstado().puedeAtender()) {
+            throw new IllegalStateException("El barbero no esta disponible.");
         }
         if (LocalDateTime.of(fecha, hora).isBefore(LocalDateTime.now())) {
             throw new IllegalArgumentException("La fecha y hora deben ser futuras.");

@@ -15,7 +15,7 @@ public class ServicioCatalogoServicio {
 
     public Servicio registrarServicio(String nombre, double precio, int duracionMinutos, String descripcion) {
         if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío.");
+            throw new IllegalArgumentException("El nombrer no puede estar vacio.");
         }
         validarPrecioYDuracion(precio, duracionMinutos);
         Servicio nuevo = new Servicio(siguienteId++, nombre, precio, duracionMinutos, descripcion);
@@ -50,7 +50,7 @@ public class ServicioCatalogoServicio {
             throw new IllegalArgumentException("El precio debe ser mayor a cero.");
         }
         if (duracion <= 0) {
-            throw new IllegalArgumentException("La duración debe ser mayor a cero.");
+            throw new IllegalArgumentException("La duradcion debe ser mayor a cero.");
         }
     }
 }

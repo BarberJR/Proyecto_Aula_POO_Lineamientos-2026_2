@@ -23,7 +23,7 @@ public class BarberoServicio implements IBuscable<Barbero> {
 
     public Barbero registrarBarbero(String nombre, String telefono, String especialidad) {
         if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío.");
+            throw new IllegalArgumentException("El nombre no puede estar vacio.");
         }
         if (especialidad == null || especialidad.trim().isEmpty()) {
             throw new IllegalArgumentException("Debe indicar al menos una especialidad.");
@@ -33,11 +33,11 @@ public class BarberoServicio implements IBuscable<Barbero> {
         return nuevo;
     }
 
-    public void cambiarEstado(Barbero barbero, String nuevoEstado) {
-        if (!"activo".equalsIgnoreCase(nuevoEstado) && !"inactivo".equalsIgnoreCase(nuevoEstado)) {
-            throw new IllegalArgumentException("El estado debe ser 'activo' o 'inactivo'.");
+    public void cambiarEstado(Barbero barbero, EstadoBarbero nuevoEstado) {
+        if (nuevoEstado == null) {
+            throw new IllegalArgumentException("Debe indicar el nuevo estado del barbero.");
         }
-        barbero.setEstado(nuevoEstado.toLowerCase());
+        barbero.setEstado(nuevoEstado);
     }
 
     public List<Cita> consultarAgenda(Barbero barbero, LocalDate fecha) {
@@ -75,7 +75,7 @@ public class BarberoServicio implements IBuscable<Barbero> {
     public List<Barbero> listarActivos() {
         List<Barbero> activos = new ArrayList<>();
         for (Barbero b : barberos) {
-            if ("activo".equalsIgnoreCase(b.getEstado())) {
+            if (b.getEstado().puedeAtender()) {
                 activos.add(b);
             }
         }
