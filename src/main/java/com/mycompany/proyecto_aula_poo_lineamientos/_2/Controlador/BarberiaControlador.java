@@ -22,6 +22,14 @@ public class BarberiaControlador {
     private final BarberoServicio barberoServicio;
     private final ServicioCatalogoServicio catalogoServicio;
     private final PagoServicio pagoServicio;
+    public static final LocalTime HORA_APERTURA =
+        CitaServicio.HORA_APERTURA;
+
+public static final LocalTime HORA_CIERRE =
+        CitaServicio.HORA_CIERRE;
+
+public static final int TURNO_MINUTOS =
+        CitaServicio.TURNO_MINUTOS;
     
    public BarberiaControlador(
         String nombre, String direccion, String telefono) {

@@ -239,17 +239,16 @@ public Cita agendar(
 
     cita.setEstado(EstadoCita.ATENDIDA);
 }
-   public int calcularDuracionTotal() {
+  public int calcularDuracionTotal(Cita cita) {
 
-    int total = 0;
-
-    for (DetalleCita d : detalles) {
-        total += d.calcularDuracion();
+    if (cita == null) {
+        throw new IllegalArgumentException(
+                "La cita es obligatoria.");
     }
 
-    return total;
+    return cita.calcularDuracionTotal();
 }
-
+  
     public List<Cita> listarCitas() {
         return new ArrayList<>(citas);
     }

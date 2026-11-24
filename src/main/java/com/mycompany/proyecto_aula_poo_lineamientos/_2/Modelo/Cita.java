@@ -81,13 +81,17 @@ public class Cita {
     public void agregarDetalle(DetalleCita detalle) {
     this.detalles.add(detalle);
     }
-     public int calcularDuracionTotal() {
-        int total = 0;
-        for (DetalleCita d : detalles) {
-            total += d.getServicio().getDuracionMinutos() * d.getCantidad();
-        }
-        return total;
+  
+    public int calcularDuracionTotal() {
+
+    int total = 0;
+
+    for (DetalleCita d : detalles) {
+        total += d.calcularDuracion();
     }
+
+    return total;
+}
 
     public double calcularTotal() {
         double total = 0;
