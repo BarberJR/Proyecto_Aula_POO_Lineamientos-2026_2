@@ -22,18 +22,26 @@ public class BarberiaControlador {
     private final BarberoServicio barberoServicio;
     private final ServicioCatalogoServicio catalogoServicio;
     private final PagoServicio pagoServicio;
-    public static final LocalTime HORA_APERTURA = LocalTime.of(9, 0);
-    public static final LocalTime HORA_CIERRE = LocalTime.of(18, 0);
-    public static final int TURNO_MINUTOS = 60;
+    
+   public BarberiaControlador(
+        String nombre, String direccion, String telefono) {
 
-    public BarberiaControlador(String nombre, String direccion, String telefono) {
-        this.barberia = new Barberia(nombre, direccion, telefono);
-        this.citaServicio = new CitaServicio();
-        this.clienteServicio = new ClienteServicio(citaServicio);
-        this.barberoServicio = new BarberoServicio(citaServicio);
-        this.catalogoServicio = new ServicioCatalogoServicio();
-        this.pagoServicio = new PagoServicio();
-    }
+    this.barberia = new Barberia(
+            nombre, direccion, telefono);
+
+    this.citaServicio = new CitaServicio();
+
+    this.pagoServicio = new PagoServicio();
+
+    this.clienteServicio =
+            new ClienteServicio(citaServicio);
+
+    this.barberoServicio =
+            new BarberoServicio(citaServicio, pagoServicio);
+
+    this.catalogoServicio =
+            new ServicioCatalogoServicio();
+}
 
 
     public String getNombreBarberia() {
