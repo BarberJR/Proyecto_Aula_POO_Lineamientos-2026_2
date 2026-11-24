@@ -38,12 +38,28 @@ public class BarberoServicio implements IBuscable<Barbero> {
         return nuevo;
     }
 
-    public void cambiarEstado(Barbero barbero, EstadoBarbero nuevoEstado) {
-        if (nuevoEstado == null) {
-            throw new IllegalArgumentException("Debe indicar el nuevo estado del barbero.");
-        }
-        barbero.setEstado(nuevoEstado);
+   public void cambiarEstado(Barbero barbero,
+        EstadoBarbero nuevoEstado) {
+
+    if (nuevoEstado == null) {
+        throw new IllegalArgumentException(
+                "Debe indicar el nuevo estado.");
     }
+
+    if (nuevoEstado != EstadoBarbero.ACTIVO) {
+
+        for (Cita c : citaServicio.listarPorBarbero(barbero)) {
+
+            if (c.getEstado() == EstadoCita.PENDIENTE) {
+
+                throw new IllegalStateException(
+                        "El barbero tiene citas pendientes.");
+            }
+        }
+    }
+
+    barbero.setEstado(nuevoEstado);
+}
 
     public List<Cita> consultarAgenda(Barbero barbero, LocalDate fecha) {
         List<Cita> agenda = new ArrayList<>();
