@@ -234,7 +234,7 @@ public class BarberiaControlador {
                 return b;
             }
         }
-        throw new IllegalArgumentException("No existe un barbero con id " + id + ".");
+        throw new IllegalArgumentException("No existe un barbero con ied " + id + ".");
     }
 
     private Servicio obtenerServicio(int id) {
