@@ -55,9 +55,16 @@ public class ClienteServicio implements IBuscable <Cliente>{
         cliente.setCorreo(correo);
     }
 
-    public void eliminarCliente(Cliente cliente) {
-        clientes.remove(cliente);
+   public void eliminarCliente(Cliente cliente) {
+
+    if (!citaServicio.listarPorCliente(cliente).isEmpty()) {
+
+        throw new IllegalStateException(
+                "El cliente tiene citas asociadas.");
     }
+
+    clientes.remove(cliente);
+}
 
     public Cliente buscarPorId(int id) {
         for (Cliente c : clientes) {
